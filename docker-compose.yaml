@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./tmp:/usr/src/app/tmp
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+    container_name: 'api-${COMPOSE_PROJECT_NAME}'
+    expose:
+      - '${SERVER_PORT}'
+    ports:
+      - '${SERVER_PORT}:5555'
+    env_file:
+      - ./.env
+    environment:
+      - DB_HOST=db
+      - MONGO_HOST=mongo:27018
+    depends_on:
+      - db
+      - mongo
+    command: sh -c "npm i && npm run migration:run && npm run swagger-autogen && npm run dev"
+  
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoUser
+      - MONGO_INITDB_ROOT_PASSWORD=mongoPass
+    ports:
+      - "27018:27018"
+
+volumes:
+  db:
+    driver: local

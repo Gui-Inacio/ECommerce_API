@@ -1,0 +1,11 @@
+node_modules/
+.env
+/dist
+tmp
+/build
+
+# volume mysql
+dbdata
+mysql_data
+
+/docs
