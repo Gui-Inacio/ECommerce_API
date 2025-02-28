@@ -1,4 +1,6 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+
+import { Category } from './Category';
 
 import { AbstractEntity } from '@/shared/infra/typeorm/entities/AbstractEntity';
 
@@ -15,4 +17,8 @@ export class Products extends AbstractEntity {
 
   @Column()
   stock: number;
+
+  @ManyToOne(() => Category, (category) => category.products)
+  @JoinColumn({ name: 'category_id' })
+  category: Category;
 }
