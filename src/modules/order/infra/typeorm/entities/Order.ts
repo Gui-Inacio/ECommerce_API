@@ -1,4 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
+
+import { OrderItem } from './OrderItem';
 
 import { AbstractEntity } from '@/shared/infra/typeorm/entities/AbstractEntity';
 import { User } from '@/modules/users/infra/typeorm/entities/User';
@@ -11,7 +13,14 @@ export class Order extends AbstractEntity {
   @Column('decimal', { precision: 10, scale: 2 })
   total: number;
 
-  @ManyToOne(() => User, (user) => user.orders)
+  @ManyToOne(() => User, (user) => user.orders, {
+    onDelete: 'SET NULL',
+  })
   @JoinColumn({ name: 'user_id' })
   user: User;
+
+  @OneToMany(() => OrderItem, (orderItem) => orderItem.order, {
+    onDelete: 'CASCADE',
+  })
+  orderItem: OrderItem[];
 }

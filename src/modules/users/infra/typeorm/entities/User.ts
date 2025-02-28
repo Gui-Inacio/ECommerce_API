@@ -14,8 +14,6 @@ export class User extends AbstractEntity {
   @Column({ select: false })
   password: string;
 
-  @OneToMany(() => Order, (order) => order.user, {
-    onDelete: 'CASCADE',
-  })
+  @OneToMany(() => Order, (order) => order.user)
   orders?: Order[];
 }
