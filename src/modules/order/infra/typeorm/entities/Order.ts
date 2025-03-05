@@ -1,6 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 
 import { OrderItem } from './OrderItem';
+import { Payment } from './Payment';
 
 import { AbstractEntity } from '@/shared/infra/typeorm/entities/AbstractEntity';
 import { User } from '@/modules/users/infra/typeorm/entities/User';
@@ -23,4 +24,7 @@ export class Order extends AbstractEntity {
     onDelete: 'CASCADE',
   })
   orderItem: OrderItem[];
+
+  @OneToMany(() => Payment, (payment) => payment.order, { onDelete: 'CASCADE' })
+  payments: Payment[];
 }
