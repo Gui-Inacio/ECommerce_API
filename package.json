@@ -48,7 +48,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "tsyringe": "^4.8.0",
-    "typeorm": "^0.3.17",
+    "typeorm": "^0.3.21",
     "uuid": "^9.0.0",
     "winston": "^3.10.0",
     "zod": "^3.22.4"
