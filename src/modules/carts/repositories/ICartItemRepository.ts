@@ -6,7 +6,7 @@ export type CartItemUpdate = StrictOmit<CartItem, 'product' | 'cart'>;
 
 interface IcartItemRepository {
   create(data: CartItemSaveImput): Promise<CartItem>;
-  findById(id: string): Promise<CartItem>;
+  findById(id: string): Promise<CartItem | null>;
   listAll(): Promise<CartItem[]>;
   delete(id: string): Promise<void>;
   update(data: CartItemUpdate): Promise<void>;
