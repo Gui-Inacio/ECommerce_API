@@ -3,7 +3,13 @@ import { Product } from '../infra/typeorm/entities/Products';
 
 export type ProductSaveInput = StrictOmit<
   Product,
-  'id' | 'category' | 'cartItems' | 'orderItems'
+  | 'id'
+  | 'category'
+  | 'cartItems'
+  | 'orderItems'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'generateUuid'
 >;
 export type ProductUpdate = StrictOmit<
   Product,
