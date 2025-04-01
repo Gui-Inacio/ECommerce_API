@@ -8,5 +8,6 @@ const productRouter = Router();
 const productController = new ProductController();
 
 productRouter.post('/create', productController.createProduct);
+productRouter.get('/:id', productController.findProductById);
 
 export { productRouter };
