@@ -5,6 +5,7 @@ import { CreateProductsDTO } from '@/modules/products/dtos/CreateProductDTO';
 import { CreateProductService } from '@/modules/products/services/CreateProductsService';
 import { FindProductsByIdService } from '@/modules/products/services/FindProductsByIdService';
 import NotFound from '@/shared/errors/notFound';
+import { ListAllProductsService } from '@/modules/products/services/ListAllProductsService';
 export default class ProductController {
   public async createProduct(request: Request, response: Response) {
     const requestValidated = new CreateProductsDTO(request.body);
@@ -26,5 +27,10 @@ export default class ProductController {
       throw new NotFound('Product not found!');
     }
     return response.status(200).json(product);
+  }
+  public async ListAllProducts(request: Request, response: Response) {
+    const listAll = container.resolve(ListAllProductsService);
+    const products = await listAll.execute();
+    return response.status(200).json(products);
   }
 }

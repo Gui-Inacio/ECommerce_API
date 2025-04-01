@@ -9,5 +9,6 @@ const productController = new ProductController();
 
 productRouter.post('/create', productController.createProduct);
 productRouter.get('/:id', productController.findProductById);
+productRouter.get('/', productController.ListAllProducts);
 
 export { productRouter };
