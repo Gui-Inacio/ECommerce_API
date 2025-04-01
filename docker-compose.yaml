@@ -24,7 +24,7 @@ services:
       - db
       - mongo
     command: sh -c "npm i && npm run migration:run && npm run swagger-autogen && npm run dev"
-  
+
   db:
     image: postgres
     environment:
@@ -33,7 +33,7 @@ services:
       POSTGRES_DB: ${DB_NAME}
     ports:
       - '5432:5432'
-    volumes: 
+    volumes:
       - db:/var/lib/postgresql/data
 
   mongo:
@@ -42,7 +42,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=mongoUser
       - MONGO_INITDB_ROOT_PASSWORD=mongoPass
     ports:
-      - "27018:27018"
+      - '27018:27018'
 
 volumes:
   db:

@@ -6,6 +6,7 @@ import { Router } from 'express';
  */
 import { AuthenticationRouter } from '../../../../modules/authentication/infra/http/routes/authentication.routes';
 import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.routes';
+
 import { productRouter } from '@/modules/products/routes/product.routes';
 
 const router = Router();

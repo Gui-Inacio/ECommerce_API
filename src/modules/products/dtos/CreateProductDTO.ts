@@ -10,7 +10,6 @@ const createProductSchema = z.object({
     .positive()
     .transform((val) => parseFloat(val.toFixed(2))),
   stock: z.number(),
-  category: z.string().uuid(),
 });
 
 export class CreateProductsDTO extends AbstractDTO<typeof createProductSchema> {
