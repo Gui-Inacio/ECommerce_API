@@ -8,7 +8,8 @@ const productRouter = Router();
 const productController = new ProductController();
 
 productRouter.post('/create', productController.createProduct);
-productRouter.get('/:id', productController.findProductById);
-productRouter.get('/', productController.ListAllProducts);
+productRouter.get('/:id', isAuth, productController.findProductById);
+productRouter.get('/', isAuth, productController.ListAllProducts);
+productRouter.delete('/delete/:id', isAuth, productController.deleteProduct);
 
 export { productRouter };

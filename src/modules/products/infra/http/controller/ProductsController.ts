@@ -6,6 +6,7 @@ import { CreateProductService } from '@/modules/products/services/CreateProducts
 import { FindProductsByIdService } from '@/modules/products/services/FindProductsByIdService';
 import NotFound from '@/shared/errors/notFound';
 import { ListAllProductsService } from '@/modules/products/services/ListAllProductsService';
+import { DeleteProductService } from '@/modules/products/services/DeleteProductService';
 export default class ProductController {
   public async createProduct(request: Request, response: Response) {
     const requestValidated = new CreateProductsDTO(request.body);
@@ -32,5 +33,11 @@ export default class ProductController {
     const listAll = container.resolve(ListAllProductsService);
     const products = await listAll.execute();
     return response.status(200).json(products);
+  }
+  public async deleteProduct(request: Request, response: Response) {
+    const { id } = request.params;
+    const deleteProduct = container.resolve(DeleteProductService);
+    await deleteProduct.execute(id);
+    return response.status(200).json({ message: 'Product succesfuly removed' });
   }
 }
