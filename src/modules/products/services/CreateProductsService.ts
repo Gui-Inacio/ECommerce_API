@@ -1,4 +1,5 @@
 import { inject, injectable } from 'tsyringe';
+
 import { IProductsRepository } from '../repositories/IProductsRepository';
 import { CreateProduct } from '../dtos/CreateProductDTO';
 
