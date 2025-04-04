@@ -11,5 +11,6 @@ productRouter.post('/create', productController.createProduct);
 productRouter.get('/:id', isAuth, productController.findProductById);
 productRouter.get('/', isAuth, productController.ListAllProducts);
 productRouter.delete('/delete/:id', isAuth, productController.deleteProduct);
+productRouter.put('/update/:id', isAuth, productController.updateProduct);
 
 export { productRouter };

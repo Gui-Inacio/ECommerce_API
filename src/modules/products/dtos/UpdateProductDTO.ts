@@ -3,7 +3,8 @@ import { z } from 'zod';
 import { AbstractDTO } from '@/shared/dtos/AbstractDTO';
 
 const updateProductSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
+  name: z.string(),
   description: z.string(),
   price: z
     .number()

@@ -1,5 +1,6 @@
-import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 import { Product } from '../infra/typeorm/entities/Products';
+
+import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type ProductSaveInput = StrictOmit<
   Product,
@@ -13,7 +14,12 @@ export type ProductSaveInput = StrictOmit<
 >;
 export type ProductUpdate = StrictOmit<
   Product,
-  'category' | 'cartItems' | 'orderItems'
+  | 'category'
+  | 'cartItems'
+  | 'orderItems'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'generateUuid'
 >;
 
 interface IProductsRepository {
