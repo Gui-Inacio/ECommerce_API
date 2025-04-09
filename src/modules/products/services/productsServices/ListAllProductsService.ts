@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IProductsRepository } from '../repositories/IProductsRepository';
+import { IProductsRepository } from '../../repositories/IProductsRepository';
 
 @injectable()
 export class ListAllProductsService {

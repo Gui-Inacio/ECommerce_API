@@ -2,12 +2,12 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { CreateProductsDTO } from '@/modules/products/dtos/CreateProductDTO';
-import { CreateProductService } from '@/modules/products/services/CreateProductsService';
-import { FindProductsByIdService } from '@/modules/products/services/FindProductsByIdService';
+import { CreateProductService } from '@/modules/products/services/productsServices/CreateProductsService';
+import { FindProductsByIdService } from '@/modules/products/services/productsServices/FindProductsByIdService';
 import NotFound from '@/shared/errors/notFound';
-import { ListAllProductsService } from '@/modules/products/services/ListAllProductsService';
-import { DeleteProductService } from '@/modules/products/services/DeleteProductService';
-import { UpdateProductService } from '@/modules/products/services/UpdateProductService';
+import { ListAllProductsService } from '@/modules/products/services/productsServices/ListAllProductsService';
+import { DeleteProductService } from '@/modules/products/services/productsServices/DeleteProductService';
+import { UpdateProductService } from '@/modules/products/services/productsServices/UpdateProductService';
 import { UpdateProductDTO } from '@/modules/products/dtos/UpdateProductDTO';
 export default class ProductController {
   public async createProduct(request: Request, response: Response) {

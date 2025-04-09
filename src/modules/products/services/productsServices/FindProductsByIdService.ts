@@ -1,15 +1,14 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IProductsRepository } from '../repositories/IProductsRepository';
+import { IProductsRepository } from '../../repositories/IProductsRepository';
 
 @injectable()
-export class DeleteProductService {
+export class FindProductsByIdService {
   constructor(
     @inject('ProductRepository')
     private readonly productRepository: IProductsRepository,
   ) {}
-
   async execute(id: string) {
-    await this.productRepository.delete(id);
+    return await this.productRepository.findById(id);
   }
 }

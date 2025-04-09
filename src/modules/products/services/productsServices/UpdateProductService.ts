@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IProductsRepository } from '../repositories/IProductsRepository';
-import { UpdateProduct } from '../dtos/UpdateProductDTO';
+import { IProductsRepository } from '../../repositories/IProductsRepository';
+import { UpdateProduct } from '../../dtos/UpdateProductDTO';
 
 @injectable()
 export class UpdateProductService {
