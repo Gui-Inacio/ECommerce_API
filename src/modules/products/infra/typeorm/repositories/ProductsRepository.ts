@@ -1,5 +1,8 @@
-import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
+import { injectable } from 'tsyringe';
+
 import { Product } from '../entities/Products';
+
+import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
 import {
   IProductsRepository,
   ProductSaveInput,
@@ -7,7 +10,6 @@ import {
 } from '@/modules/products/repositories/IProductsRepository';
 import { AppDataSource } from '@/shared/infra/typeorm';
 import { TransactionManager } from '@/shared/container/providers/transaction-manager/TransactionManager';
-import { injectable } from 'tsyringe';
 
 @injectable()
 export class ProductRepository

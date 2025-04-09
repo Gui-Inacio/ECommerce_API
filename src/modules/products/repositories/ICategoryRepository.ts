@@ -2,7 +2,10 @@ import { Category } from '../infra/typeorm/entities/Category';
 
 import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
-export type CategorySaveInput = StrictOmit<Category, 'id' | 'products'>;
+export type CategorySaveInput = StrictOmit<
+  Category,
+  'id' | 'products' | 'createdAt' | 'updatedAt' | 'generateUuid'
+>;
 export type CategoryUpdate = StrictOmit<Category, 'products'>;
 
 interface ICategoryRepository {

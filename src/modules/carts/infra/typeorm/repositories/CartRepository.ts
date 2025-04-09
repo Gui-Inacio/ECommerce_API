@@ -1,6 +1,8 @@
-import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
 import { injectable } from 'tsyringe';
+
 import { Cart } from '../entities/Cart';
+
+import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
 import {
   CartSaveInput,
   CartUpdate,
@@ -10,7 +12,7 @@ import { AppDataSource } from '@/shared/infra/typeorm';
 import { TransactionManager } from '@/shared/container/providers/transaction-manager/TransactionManager';
 
 @injectable()
-export class CategoryRepository
+export class CartRepository
   extends AbstractTransactionRepository<Cart>
   implements ICartRepository
 {
