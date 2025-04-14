@@ -36,4 +36,7 @@ export class CategoryRepository
   async update(data: CategoryUpdate): Promise<void> {
     await this.categoryRepository.update({ id: data.id }, data);
   }
+  async findByName(name: string) {
+    return await this.categoryRepository.findOne({ where: { name } });
+  }
 }

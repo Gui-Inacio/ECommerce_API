@@ -14,6 +14,7 @@ interface ICategoryRepository {
   listAll(): Promise<Category[]>;
   delete(id: string): Promise<void>;
   update(data: CategoryUpdate): Promise<void>;
+  findByName(name: string): Promise<Category | null>;
 }
 
 export { ICategoryRepository };

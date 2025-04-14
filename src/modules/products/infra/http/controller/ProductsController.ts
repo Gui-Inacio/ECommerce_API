@@ -13,9 +13,9 @@ export default class ProductController {
   public async createProduct(request: Request, response: Response) {
     const requestValidated = new CreateProductsDTO(request.body);
 
-    const createProductServer = container.resolve(CreateProductService);
+    const createProductService = container.resolve(CreateProductService);
 
-    const createdProduct = await createProductServer.execute(
+    const createdProduct = await createProductService.execute(
       requestValidated.getAll(),
     );
 

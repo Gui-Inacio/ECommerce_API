@@ -8,6 +8,7 @@ import { AuthenticationRouter } from '../../../../modules/authentication/infra/h
 import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.routes';
 
 import { productRouter } from '@/modules/products/routes/product.routes';
+import { categoryRouter } from '@/modules/products/routes/category.routes';
 
 const router = Router();
 
@@ -32,5 +33,6 @@ router.get(
 router.use('/users', UsersRouter);
 router.use('/authentication', AuthenticationRouter);
 router.use('/products', productRouter);
+router.use('/category', categoryRouter);
 
 export { router };
