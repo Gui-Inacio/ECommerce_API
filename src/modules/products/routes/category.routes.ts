@@ -9,5 +9,6 @@ const categoryController = new CategoryController();
 
 categoryRouter.post('/create', isAuth, categoryController.createCategory);
 categoryRouter.get('/search/:id', isAuth, categoryController.findById);
+categoryRouter.get('/', isAuth, categoryController.listAll);
 
 export { categoryRouter };

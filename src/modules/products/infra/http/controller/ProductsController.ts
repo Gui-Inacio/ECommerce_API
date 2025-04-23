@@ -40,7 +40,9 @@ export default class ProductController {
     const { id } = request.params;
     const deleteProduct = container.resolve(DeleteProductService);
     await deleteProduct.execute(id);
-    return response.status(200).json({ message: 'Product succesfuly removed' });
+    return response
+      .status(200)
+      .json({ message: 'Product succesfully removed' });
   }
 
   public async updateProduct(request: Request, response: Response) {
