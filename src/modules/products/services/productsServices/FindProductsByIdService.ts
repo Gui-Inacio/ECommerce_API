@@ -2,6 +2,8 @@ import { inject, injectable } from 'tsyringe';
 
 import { IProductsRepository } from '../../repositories/IProductsRepository';
 
+import NotFound from '@/shared/errors/notFound';
+
 @injectable()
 export class FindProductsByIdService {
   constructor(
@@ -9,6 +11,10 @@ export class FindProductsByIdService {
     private readonly productRepository: IProductsRepository,
   ) {}
   async execute(id: string) {
-    return await this.productRepository.findById(id);
+    const product = await this.productRepository.findById(id);
+    if (!product) {
+      throw new NotFound('Product not found!');
+    }
+    return product;
   }
 }

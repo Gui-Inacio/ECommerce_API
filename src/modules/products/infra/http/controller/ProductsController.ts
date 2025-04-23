@@ -4,7 +4,6 @@ import { container } from 'tsyringe';
 import { CreateProductsDTO } from '@/modules/products/dtos/CreateProductDTO';
 import { CreateProductService } from '@/modules/products/services/productsServices/CreateProductsService';
 import { FindProductsByIdService } from '@/modules/products/services/productsServices/FindProductsByIdService';
-import NotFound from '@/shared/errors/notFound';
 import { ListAllProductsService } from '@/modules/products/services/productsServices/ListAllProductsService';
 import { DeleteProductService } from '@/modules/products/services/productsServices/DeleteProductService';
 import { UpdateProductService } from '@/modules/products/services/productsServices/UpdateProductService';
@@ -26,9 +25,6 @@ export default class ProductController {
     const findById = container.resolve(FindProductsByIdService);
     const product = await findById.execute(id);
 
-    if (!product) {
-      throw new NotFound('Product not found!');
-    }
     return response.status(200).json(product);
   }
   public async ListAllProducts(request: Request, response: Response) {
