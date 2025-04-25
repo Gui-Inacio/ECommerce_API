@@ -6,7 +6,10 @@ export type CategorySaveInput = StrictOmit<
   Category,
   'id' | 'products' | 'createdAt' | 'updatedAt' | 'generateUuid'
 >;
-export type CategoryUpdate = StrictOmit<Category, 'products'>;
+export type CategoryUpdate = StrictOmit<
+  Category,
+  'products' | 'updatedAt' | 'generateUuid' | 'createdAt'
+>;
 
 interface ICategoryRepository {
   create(data: CategorySaveInput): Promise<Category>;
