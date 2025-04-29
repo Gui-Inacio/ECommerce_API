@@ -11,5 +11,6 @@ categoryRouter.post('/create', isAuth, categoryController.createCategory);
 categoryRouter.get('/search/:id', isAuth, categoryController.findById);
 categoryRouter.get('/', isAuth, categoryController.listAll);
 categoryRouter.put('/update/:id', isAuth, categoryController.update);
+categoryRouter.delete('/delete/:id', isAuth, categoryController.delete);
 
 export { categoryRouter };
