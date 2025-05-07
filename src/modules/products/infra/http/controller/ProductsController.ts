@@ -8,7 +8,7 @@ import { ListAllProductsService } from '@/modules/products/services/productsServ
 import { DeleteProductService } from '@/modules/products/services/productsServices/DeleteProductService';
 import { UpdateProductService } from '@/modules/products/services/productsServices/UpdateProductService';
 import { UpdateProductDTO } from '@/modules/products/dtos/UpdateProductDTO';
-export default class ProductController {
+export class ProductController {
   public async createProduct(request: Request, response: Response) {
     const requestValidated = new CreateProductsDTO(request.body);
 

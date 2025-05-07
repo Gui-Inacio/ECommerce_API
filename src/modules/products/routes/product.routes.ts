@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import ProductController from '../infra/http/controller/ProductsController';
+import { ProductController } from '../infra/http/controller/ProductsController';
 
 import { isAuth } from '@/shared/infra/http/middlewares/IsAuth';
 

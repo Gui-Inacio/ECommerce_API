@@ -4,7 +4,7 @@ import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type UserSaveInput = StrictOmit<
   User,
-  'id' | 'createdAt' | 'updatedAt' | 'generateUuid'
+  'id' | 'createdAt' | 'updatedAt' | 'generateUuid' | 'cart'
 >;
 export type UserUpdateInput = Pick<User, 'id' | 'password'>;
 

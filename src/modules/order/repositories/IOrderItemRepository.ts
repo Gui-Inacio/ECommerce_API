@@ -1,9 +1,10 @@
-import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 import { OrderItem } from '../infra/typeorm/entities/OrderItem';
+
+import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type OrderItemSaveInput = StrictOmit<
   OrderItem,
-  'id' | 'order' | 'product'
+  'id' | 'order' | 'product' | 'createdAt' | 'updatedAt' | 'generateUuid'
 >;
 export type OrderItemUpdate = StrictOmit<OrderItem, 'order' | 'product'>;
 

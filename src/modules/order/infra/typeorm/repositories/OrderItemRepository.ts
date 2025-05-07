@@ -1,11 +1,13 @@
-import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
+import { injectable } from 'tsyringe';
+
 import { OrderItem } from '../entities/OrderItem';
+
+import { AbstractTransactionRepository } from '@/shared/container/providers/transaction-manager/AbstractTransactionRepository';
 import {
   IOrderItemRepository,
   OrderItemSaveInput,
   OrderItemUpdate,
-} from '@/modules/order/repositories/IOrderItem';
-import { injectable } from 'tsyringe';
+} from '@/modules/order/repositories/IOrderItemRepository';
 import { AppDataSource } from '@/shared/infra/typeorm';
 import { TransactionManager } from '@/shared/container/providers/transaction-manager/TransactionManager';
 

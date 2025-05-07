@@ -2,7 +2,10 @@ import { Order } from '../infra/typeorm/entities/Order';
 
 import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
-export type OrderSaveInput = StrictOmit<Order, 'id' | 'payments' | 'orderItem'>;
+export type OrderSaveInput = StrictOmit<
+  Order,
+  'id' | 'payments' | 'orderItem' | 'createdAt' | 'updatedAt' | 'generateUuid'
+>;
 export type OrderUpdate = StrictOmit<Order, 'payments' | 'orderItem'>;
 
 interface IOrderRepository {

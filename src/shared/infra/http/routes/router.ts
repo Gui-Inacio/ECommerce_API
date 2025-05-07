@@ -9,6 +9,7 @@ import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.r
 
 import { productRouter } from '@/modules/products/routes/product.routes';
 import { categoryRouter } from '@/modules/products/routes/category.routes';
+import { orderRouter } from '@/modules/order/routes/order.routes';
 
 const router = Router();
 
@@ -34,5 +35,6 @@ router.use('/users', UsersRouter);
 router.use('/authentication', AuthenticationRouter);
 router.use('/products', productRouter);
 router.use('/category', categoryRouter);
+router.use('/orders/', orderRouter);
 
 export { router };
