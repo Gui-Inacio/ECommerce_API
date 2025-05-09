@@ -8,5 +8,6 @@ const orderRouter = Router();
 const orderController = new OrderController();
 
 orderRouter.post('/create/', isAuth, orderController.createOrder);
+orderRouter.get('/', isAuth, orderController.listAll);
 
 export { orderRouter };
