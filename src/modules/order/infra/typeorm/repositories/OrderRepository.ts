@@ -28,7 +28,9 @@ export class OrderRepository
     return await this.orderRepository.findOne({ where: { id } });
   }
   async listAll() {
-    return await this.orderRepository.find();
+    return await this.orderRepository.find({
+      relations: ['user'],
+    });
   }
   async delete(id: string) {
     await this.orderRepository.delete(id);

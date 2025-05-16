@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { Check, Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 
 import { Order } from './Order';
 
@@ -8,10 +8,10 @@ import { Product } from '@/modules/products/infra/typeorm/entities/Products';
 @Entity('order_items')
 export class OrderItem extends AbstractEntity {
   @Column()
-  status: string;
+  quantity: number;
 
   @Column('decimal', { precision: 10, scale: 2 })
-  total: number;
+  price: number;
 
   @ManyToOne(() => Order, (order) => order.orderItem)
   @JoinColumn({ name: 'order_id' })

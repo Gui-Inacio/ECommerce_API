@@ -9,6 +9,8 @@ import { ICategoryRepository } from '@/modules/products/repositories/ICategoryRe
 import { CategoryRepository } from '@/modules/products/infra/typeorm/repositories/CategoryRepository';
 import { IOrderRepository } from '@/modules/order/repositories/IOrderRepository';
 import { OrderRepository } from '@/modules/order/infra/typeorm/repositories/OrderRepository';
+import { IOrderItemRepository } from '@/modules/order/repositories/IOrderItemRepository';
+import { OrderItemRepository } from '@/modules/order/infra/typeorm/repositories/OrderItemRepository';
 
 container.register<IUserRepository>('UserRepository', UserRepository);
 container.register<IProductsRepository>('ProductRepository', ProductRepository);
@@ -17,3 +19,7 @@ container.register<ICategoryRepository>(
   CategoryRepository,
 );
 container.register<IOrderRepository>('OrderRepository', OrderRepository);
+container.register<IOrderItemRepository>(
+  'OrderItemRepository',
+  OrderItemRepository,
+);

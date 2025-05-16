@@ -10,6 +10,7 @@ import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.r
 import { productRouter } from '@/modules/products/routes/product.routes';
 import { categoryRouter } from '@/modules/products/routes/category.routes';
 import { orderRouter } from '@/modules/order/routes/order.routes';
+import { orderItemRouter } from '@/modules/order/routes/orderItem.routes';
 
 const router = Router();
 
@@ -36,5 +37,6 @@ router.use('/authentication', AuthenticationRouter);
 router.use('/products', productRouter);
 router.use('/category', categoryRouter);
 router.use('/orders/', orderRouter);
+router.use('/orderItems', orderItemRouter);
 
 export { router };

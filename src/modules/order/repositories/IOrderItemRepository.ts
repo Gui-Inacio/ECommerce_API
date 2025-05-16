@@ -4,7 +4,7 @@ import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type OrderItemSaveInput = StrictOmit<
   OrderItem,
-  'id' | 'order' | 'product' | 'createdAt' | 'updatedAt' | 'generateUuid'
+  'id' | 'createdAt' | 'updatedAt' | 'generateUuid'
 >;
 export type OrderItemUpdate = StrictOmit<OrderItem, 'order' | 'product'>;
 
