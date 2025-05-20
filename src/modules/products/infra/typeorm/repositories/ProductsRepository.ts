@@ -28,7 +28,7 @@ export class ProductRepository
     return await this.productRepository.findOne({ where: { id } });
   }
   async listAll() {
-    return await this.productRepository.find();
+    return await this.productRepository.find({ relations: ['category'] });
   }
   async delete(id: string) {
     await this.productRepository.delete(id);

@@ -11,6 +11,7 @@ const updateProductSchema = z.object({
     .positive()
     .transform((val) => parseFloat(val.toFixed(2))),
   stock: z.number(),
+  category: z.string(),
 });
 
 export class UpdateProductDTO extends AbstractDTO<typeof updateProductSchema> {

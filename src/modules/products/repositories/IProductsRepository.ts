@@ -4,22 +4,11 @@ import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type ProductSaveInput = StrictOmit<
   Product,
-  | 'id'
-  | 'category'
-  | 'cartItems'
-  | 'orderItems'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'generateUuid'
+  'id' | 'cartItems' | 'orderItems' | 'createdAt' | 'updatedAt' | 'generateUuid'
 >;
 export type ProductUpdate = StrictOmit<
   Product,
-  | 'category'
-  | 'cartItems'
-  | 'orderItems'
-  | 'createdAt'
-  | 'updatedAt'
-  | 'generateUuid'
+  'cartItems' | 'orderItems' | 'createdAt' | 'updatedAt' | 'generateUuid'
 >;
 
 interface IProductsRepository {
