@@ -14,6 +14,7 @@ interface IOrderItemRepository {
   listAlll(): Promise<OrderItem[]>;
   delete(id: string): Promise<void>;
   update(data: OrderItem): Promise<void>;
+  listAllByOrder(id: string): Promise<OrderItem[]>;
 }
 
 export { IOrderItemRepository };

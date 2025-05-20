@@ -36,4 +36,10 @@ export class OrderItemRepository
   async update(data: OrderItemUpdate) {
     await this.orderItemRepository.update({ id: data.id }, data);
   }
+  async listAllByOrder(id: string) {
+    return await this.orderItemRepository.find({
+      where: { order: { id: id } },
+      relations: ['product'],
+    });
+  }
 }
