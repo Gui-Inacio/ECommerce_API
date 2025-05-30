@@ -9,5 +9,6 @@ const orderController = new OrderController();
 
 orderRouter.post('/create/', isAuth, orderController.createOrder);
 orderRouter.get('/', isAuth, orderController.listAll);
+orderRouter.post('/:order_id/finalize', isAuth, orderController.finalizeOrder);
 
 export { orderRouter };

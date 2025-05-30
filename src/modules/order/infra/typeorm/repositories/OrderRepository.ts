@@ -25,7 +25,10 @@ export class OrderRepository
     return await this.orderRepository.save(order);
   }
   async findById(id: string) {
-    return await this.orderRepository.findOne({ where: { id } });
+    return await this.orderRepository.findOne({
+      where: { id },
+      relations: ['user'],
+    });
   }
   async listAll() {
     return await this.orderRepository.find({
@@ -37,5 +40,8 @@ export class OrderRepository
   }
   async update(data: OrderUpdate) {
     await this.orderRepository.update({ id: data.id }, data);
+  }
+  async save(order: Order) {
+    return await this.orderRepository.save(order);
   }
 }

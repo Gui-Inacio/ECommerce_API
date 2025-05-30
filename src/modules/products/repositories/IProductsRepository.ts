@@ -17,6 +17,7 @@ interface IProductsRepository {
   listAll(): Promise<Product[]>;
   delete(id: string): Promise<void>;
   update(data: ProductUpdate): Promise<void>;
+  save(product: Product): Promise<Product>;
 }
 
 export { IProductsRepository };

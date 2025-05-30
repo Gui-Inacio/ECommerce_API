@@ -14,5 +14,6 @@ interface IOrderRepository {
   listAll(): Promise<Order[]>;
   delete(id: string): Promise<void>;
   update(data: OrderUpdate): Promise<void>;
+  save(order: Order): Promise<Order>;
 }
 export { IOrderRepository };

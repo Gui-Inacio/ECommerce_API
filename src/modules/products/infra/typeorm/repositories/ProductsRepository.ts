@@ -36,4 +36,7 @@ export class ProductRepository
   async update(data: ProductUpdate) {
     await this.productRepository.update({ id: data.id }, data);
   }
+  async save(product: Product) {
+    return await this.productRepository.save(product);
+  }
 }
