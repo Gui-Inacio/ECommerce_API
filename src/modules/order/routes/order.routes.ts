@@ -11,5 +11,6 @@ orderRouter.post('/create/', isAuth, orderController.createOrder);
 orderRouter.get('/', isAuth, orderController.listAll);
 orderRouter.post('/:order_id/finalize', isAuth, orderController.finalizeOrder);
 orderRouter.post('/:order_id/cancel', isAuth, orderController.cancelOrder);
+orderRouter.get('/user/:user_id', isAuth, orderController.listOrderByUser);
 
 export { orderRouter };

@@ -44,4 +44,10 @@ export class OrderRepository
   async save(order: Order) {
     return await this.orderRepository.save(order);
   }
+  async listOrderByUser(user_id: string) {
+    return await this.orderRepository.find({
+      where: { user: { id: user_id } },
+      relations: ['user'],
+    });
+  }
 }

@@ -6,6 +6,7 @@ import { CreateOrderService } from '@/modules/order/services/OrderServices/Creat
 import { ListAllOrderService } from '@/modules/order/services/OrderServices/ListAllOrderService';
 import { FinalizeOrderService } from '@/modules/order/services/OrderServices/FinalizeOrderService';
 import { CancelOrderService } from '@/modules/order/services/OrderServices/CancelOrderService';
+import { ListOrderByUserService } from '@/modules/order/services/OrderServices/ListOrdersByUserService';
 export class OrderController {
   public async createOrder(request: Request, response: Response) {
     const requestValidated = new CreateOrderDTO(request.body);
@@ -42,5 +43,12 @@ export class OrderController {
       user_id,
     });
     return response.json(canceledOrder);
+  }
+  public async listOrderByUser(request: Request, response: Response) {
+    const { user_id } = request.params;
+    const listOrderByUserService = container.resolve(ListOrderByUserService);
+    const orders = await listOrderByUserService.execute(user_id);
+
+    return response.json(orders);
   }
 }
