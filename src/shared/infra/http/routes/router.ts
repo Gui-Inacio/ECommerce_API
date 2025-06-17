@@ -6,8 +6,7 @@ import { Router } from 'express';
  */
 import { AuthenticationRouter } from '../../../../modules/authentication/infra/http/routes/authentication.routes';
 import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.routes';
-
-import { cepRouter } from './cep.routes';
+import { cepRouter } from '../../../../modules/address/infra/http/routes/cep.routes';
 
 import { productRouter } from '@/modules/products/routes/product.routes';
 import { categoryRouter } from '@/modules/products/routes/category.routes';

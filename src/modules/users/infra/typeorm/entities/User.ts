@@ -1,5 +1,7 @@
 import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
 
+import { Address } from '../../../../address/infra/typeorm/entities/Adress';
+
 import { AbstractEntity } from '@/shared/infra/typeorm/entities/AbstractEntity';
 import { Order } from '@/modules/order/infra/typeorm/entities/Order';
 import { Cart } from '@/modules/carts/infra/typeorm/entities/Cart';
@@ -20,4 +22,7 @@ export class User extends AbstractEntity {
 
   @OneToOne(() => Cart, (cart) => cart.user, { onDelete: 'CASCADE' })
   cart: Cart;
+
+  @OneToMany(() => Address, (address) => address.user)
+  addresses: Address[];
 }
