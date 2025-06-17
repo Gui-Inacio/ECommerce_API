@@ -5,6 +5,7 @@ import { CreateUserDTO } from '../../../dtos/CreateUserDTO';
 
 import { container } from '@/shared/container/providers/transaction-manager/ContainerResolveTransaction';
 import { FindUserByIdService } from '@/modules/users/services/FindUserByIdService';
+import { ViaCepService } from '@/shared/services/ViaCepService';
 
 export class UsersController {
   async createUser(request: Request, response: Response) {
@@ -21,5 +22,13 @@ export class UsersController {
     const findById = container.resolve(FindUserByIdService);
     const user = await findById.execute(id);
     return response.status(200).json(user);
+  }
+  async getAddress(request: Request, response: Response) {
+    const { cep } = request.params;
+
+    const viaCepService = new ViaCepService();
+    const address = await viaCepService.getAddressByCep(cep);
+
+    return response.json(address);
   }
 }

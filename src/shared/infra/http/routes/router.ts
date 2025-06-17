@@ -7,6 +7,8 @@ import { Router } from 'express';
 import { AuthenticationRouter } from '../../../../modules/authentication/infra/http/routes/authentication.routes';
 import { UsersRouter } from '../../../../modules/users/infra/http/routes/users.routes';
 
+import { cepRouter } from './cep.routes';
+
 import { productRouter } from '@/modules/products/routes/product.routes';
 import { categoryRouter } from '@/modules/products/routes/category.routes';
 import { orderRouter } from '@/modules/order/routes/order.routes';
@@ -38,5 +40,6 @@ router.use('/products', productRouter);
 router.use('/category', categoryRouter);
 router.use('/orders/', orderRouter);
 router.use('/orderItems', orderItemRouter);
+router.use('/cep', cepRouter);
 
 export { router };
