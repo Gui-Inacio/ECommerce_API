@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-interface AddressResponse {
+export interface AddressResponse {
   cep: string;
   logradouro: string;
   complemento: string;

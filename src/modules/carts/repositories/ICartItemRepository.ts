@@ -1,5 +1,6 @@
-import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 import { CartItem } from '../infra/typeorm/entities/CartItem';
+
+import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 
 export type CartItemSaveImput = StrictOmit<CartItem, 'id' | 'product' | 'cart'>;
 export type CartItemUpdate = StrictOmit<CartItem, 'product' | 'cart'>;

@@ -12,6 +12,7 @@ import { productRouter } from '@/modules/products/routes/product.routes';
 import { categoryRouter } from '@/modules/products/routes/category.routes';
 import { orderRouter } from '@/modules/order/routes/order.routes';
 import { orderItemRouter } from '@/modules/order/routes/orderItem.routes';
+import { addressRouter } from '@/modules/address/infra/http/routes/address.routes';
 
 const router = Router();
 
@@ -40,5 +41,6 @@ router.use('/category', categoryRouter);
 router.use('/orders/', orderRouter);
 router.use('/orderItems', orderItemRouter);
 router.use('/cep', cepRouter);
+router.use('/address', addressRouter);
 
 export { router };

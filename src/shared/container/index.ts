@@ -11,6 +11,8 @@ import { IOrderRepository } from '@/modules/order/repositories/IOrderRepository'
 import { OrderRepository } from '@/modules/order/infra/typeorm/repositories/OrderRepository';
 import { IOrderItemRepository } from '@/modules/order/repositories/IOrderItemRepository';
 import { OrderItemRepository } from '@/modules/order/infra/typeorm/repositories/OrderItemRepository';
+import { IAddressRepository } from '@/modules/address/repositories/IAddressRepository';
+import { AddressRepository } from '@/modules/address/infra/typeorm/repositories/AdressRepository';
 
 container.register<IUserRepository>('UserRepository', UserRepository);
 container.register<IProductsRepository>('ProductRepository', ProductRepository);
@@ -23,3 +25,4 @@ container.register<IOrderItemRepository>(
   'OrderItemRepository',
   OrderItemRepository,
 );
+container.register<IAddressRepository>('AddressRepository', AddressRepository);

@@ -17,7 +17,6 @@ export class Address extends AbstractEntity {
 
   @Column({ nullable: true })
   complement: string;
-
   @Column()
   neighborhood: string;
 
