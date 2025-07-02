@@ -35,4 +35,9 @@ export class AddressRepository
       { isDefault: false },
     );
   }
+  async findAllAddressByUser(user_id: string): Promise<Address[]> {
+    return await this.addressRepository.find({
+      where: { user: { id: user_id } },
+    });
+  }
 }

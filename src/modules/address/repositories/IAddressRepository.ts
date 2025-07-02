@@ -17,6 +17,7 @@ interface IAddressRepository {
     },
   ): Promise<Address>;
   updateManyAsNotDefault(user_id: string): Promise<void>;
+  findAllAddressByUser(user_id: string): Promise<Address[]>;
 }
 
 export { IAddressRepository };
