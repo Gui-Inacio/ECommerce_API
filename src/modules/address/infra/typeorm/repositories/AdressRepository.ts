@@ -40,4 +40,7 @@ export class AddressRepository
       where: { user: { id: user_id } },
     });
   }
+  async findById(id: string): Promise<Address | null> {
+    return await this.addressRepository.findOne({ where: { id: id } });
+  }
 }

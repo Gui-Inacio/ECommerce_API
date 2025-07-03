@@ -9,9 +9,9 @@ const addressController = new AddressController();
 
 addressRouter.post('/create', addressController.createAddress);
 addressRouter.get(
-  '/search/:user',
+  '/user/:user',
   isAuth,
   addressController.findAllAddressByUser,
 );
-
+addressRouter.get('/:id', isAuth, addressController.findById);
 export { addressRouter };
