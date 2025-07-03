@@ -14,4 +14,10 @@ addressRouter.get(
   addressController.findAllAddressByUser,
 );
 addressRouter.get('/:id', isAuth, addressController.findById);
+addressRouter.get(
+  '/user/default/:user',
+  isAuth,
+  addressController.findDefaultByUser,
+);
+
 export { addressRouter };

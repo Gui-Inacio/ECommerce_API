@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import { CreateAddressService } from '@/modules/address/services/CreateAddressService';
 import { FindAllAddressByUserService } from '@/modules/address/services/FindAllAddressByUserService';
 import { FindAddressByIdService } from '@/modules/address/services/FindAddressByIdService';
+import { FindDefaultByUserService } from '@/modules/address/services/FindDefaultByUserIdService';
 
 export class AddressController {
   public async createAddress(request: Request, response: Response) {
@@ -26,6 +27,15 @@ export class AddressController {
     const findAddressByIdService = container.resolve(FindAddressByIdService);
 
     const address = await findAddressByIdService.execute(id);
+
+    return response.status(200).json(address);
+  }
+  public async findDefaultByUser(request: Request, response: Response) {
+    const { user } = request.params;
+    const findDefaultByUserService = container.resolve(
+      FindDefaultByUserService,
+    );
+    const address = await findDefaultByUserService.execute(user);
 
     return response.status(200).json(address);
   }

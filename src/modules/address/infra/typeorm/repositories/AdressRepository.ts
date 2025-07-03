@@ -43,4 +43,9 @@ export class AddressRepository
   async findById(id: string): Promise<Address | null> {
     return await this.addressRepository.findOne({ where: { id: id } });
   }
+  async findDefaultByUser(user_id: string): Promise<Address | null> {
+    return await this.addressRepository.findOne({
+      where: { user: { id: user_id }, isDefault: true },
+    });
+  }
 }
