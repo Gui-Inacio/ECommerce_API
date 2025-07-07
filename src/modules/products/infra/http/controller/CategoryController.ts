@@ -36,7 +36,7 @@ export class CategoryController {
 
     return response
       .status(200)
-      .json({ message: 'Category succesfully removed' });
+      .json({ message: 'Category successfully removed' });
   }
   public async listAll(request: Request, response: Response) {
     const listAll = container.resolve(ListAllCategorysService);

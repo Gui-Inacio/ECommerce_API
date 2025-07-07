@@ -5,6 +5,7 @@ import { CreateAddressService } from '@/modules/address/services/CreateAddressSe
 import { FindAllAddressByUserService } from '@/modules/address/services/FindAllAddressByUserService';
 import { FindAddressByIdService } from '@/modules/address/services/FindAddressByIdService';
 import { FindDefaultByUserService } from '@/modules/address/services/FindDefaultByUserIdService';
+import { DeleteAddressByIdService } from '@/modules/address/services/DeleteAddressByIdService';
 
 export class AddressController {
   public async createAddress(request: Request, response: Response) {
@@ -38,5 +39,20 @@ export class AddressController {
     const address = await findDefaultByUserService.execute(user);
 
     return response.status(200).json(address);
+  }
+  public async deleteById(request: Request, response: Response) {
+    const { id } = request.params;
+    if (!id || typeof id !== 'string') {
+      return response
+        .status(400)
+        .json({ message: 'Invalid or missing ID parameter.' });
+    }
+    const deleteAddressByIdService = container.resolve(
+      DeleteAddressByIdService,
+    );
+    await deleteAddressByIdService.execute(id);
+    return response
+      .status(200)
+      .json({ message: 'Address successfully removed' });
   }
 }

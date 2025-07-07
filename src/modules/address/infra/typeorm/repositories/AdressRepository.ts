@@ -48,4 +48,7 @@ export class AddressRepository
       where: { user: { id: user_id }, isDefault: true },
     });
   }
+  async deleteById(id: string): Promise<void> {
+    await this.addressRepository.delete(id);
+  }
 }

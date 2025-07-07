@@ -19,5 +19,6 @@ addressRouter.get(
   isAuth,
   addressController.findDefaultByUser,
 );
+addressRouter.delete('/delete/:id', isAuth, addressController.deleteById);
 
 export { addressRouter };
