@@ -1,4 +1,5 @@
 import { CreateAddress } from '../dtos/CreateAddressDTO';
+import { UpdateAddress } from '../dtos/UpdateAddressDTO';
 import { Address } from '../infra/typeorm/entities/Adress';
 
 //import { StrictOmit } from '@/shared/util/types/StrictOmitType';
@@ -22,6 +23,7 @@ interface IAddressRepository {
   findDefaultByUser(user_id: string): Promise<Address | null>;
   deleteById(id: string): Promise<void>;
   setDefault(id: string): Promise<void>;
+  updateAddress(data: UpdateAddress): Promise<void>;
 }
 
 export { IAddressRepository };

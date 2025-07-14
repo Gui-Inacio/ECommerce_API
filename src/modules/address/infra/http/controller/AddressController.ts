@@ -7,6 +7,8 @@ import { FindAddressByIdService } from '@/modules/address/services/FindAddressBy
 import { FindDefaultByUserService } from '@/modules/address/services/FindDefaultByUserIdService';
 import { DeleteAddressByIdService } from '@/modules/address/services/DeleteAddressByIdService';
 import { SetDefaultAdressService } from '@/modules/address/services/SetDefaultAdressService';
+import { UpdateAddressService } from '@/modules/address/services/UpdateAdressService';
+import { UpdateAddressDTO } from '@/modules/address/dtos/UpdateAddressDTO';
 
 export class AddressController {
   public async createAddress(request: Request, response: Response) {
@@ -63,5 +65,18 @@ export class AddressController {
     const setDefaultAdressService = container.resolve(SetDefaultAdressService);
     await setDefaultAdressService.execute(addressId, userId);
     return response.status(200).json({ message: 'Address set as default.' });
+  }
+  public async updateAdress(request: Request, response: Response) {
+    const requestValidated = new UpdateAddressDTO({
+      id: request.params.id,
+      ...request.body,
+    });
+    const userId = response.locals.userId;
+
+    const updateAddressService = container.resolve(UpdateAddressService);
+    await updateAddressService.execute(userId, requestValidated.getAll());
+    return response
+      .status(200)
+      .json({ message: 'Address updated successfully.' });
   }
 }

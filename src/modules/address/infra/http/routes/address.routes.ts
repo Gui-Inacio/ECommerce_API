@@ -21,5 +21,6 @@ addressRouter.get(
 );
 addressRouter.delete('/delete/:id', isAuth, addressController.deleteById);
 addressRouter.put('/:id/set-default', isAuth, addressController.setDefault);
+addressRouter.put('/update/:id', isAuth, addressController.updateAdress);
 
 export { addressRouter };

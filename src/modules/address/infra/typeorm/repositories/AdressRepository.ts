@@ -7,6 +7,7 @@ import { IAddressRepository } from '@/modules/address/repositories/IAddressRepos
 import { AppDataSource } from '@/shared/infra/typeorm';
 import { TransactionManager } from '@/shared/container/providers/transaction-manager/TransactionManager';
 import { CreateAddress } from '@/modules/address/dtos/CreateAddressDTO';
+import { UpdateAddress } from '@/modules/address/dtos/UpdateAddressDTO';
 
 @injectable()
 export class AddressRepository
@@ -56,5 +57,11 @@ export class AddressRepository
   }
   async setDefault(id: string): Promise<void> {
     await this.addressRepository.update({ id: id }, { isDefault: true });
+  }
+  async updateAddress(data: UpdateAddress): Promise<void> {
+    await this.addressRepository.update(
+      { id: data.id },
+      { ...data, complement: data.complement ?? undefined },
+    );
   }
 }
