@@ -6,6 +6,7 @@ import { FindAllAddressByUserService } from '@/modules/address/services/FindAllA
 import { FindAddressByIdService } from '@/modules/address/services/FindAddressByIdService';
 import { FindDefaultByUserService } from '@/modules/address/services/FindDefaultByUserIdService';
 import { DeleteAddressByIdService } from '@/modules/address/services/DeleteAddressByIdService';
+import { SetDefaultAdressService } from '@/modules/address/services/SetDefaultAdressService';
 
 export class AddressController {
   public async createAddress(request: Request, response: Response) {
@@ -54,5 +55,13 @@ export class AddressController {
     return response
       .status(200)
       .json({ message: 'Address successfully removed' });
+  }
+  public async setDefault(request: Request, response: Response) {
+    const userId: string = response.locals.userId;
+    const addressId = request.params.id;
+
+    const setDefaultAdressService = container.resolve(SetDefaultAdressService);
+    await setDefaultAdressService.execute(addressId, userId);
+    return response.status(200).json({ message: 'Address set as default.' });
   }
 }

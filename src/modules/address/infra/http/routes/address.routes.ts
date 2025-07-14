@@ -20,5 +20,6 @@ addressRouter.get(
   addressController.findDefaultByUser,
 );
 addressRouter.delete('/delete/:id', isAuth, addressController.deleteById);
+addressRouter.put('/:id/set-default', isAuth, addressController.setDefault);
 
 export { addressRouter };

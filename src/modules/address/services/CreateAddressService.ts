@@ -32,7 +32,6 @@ export class CreateAddressService {
 
     const { localidade, uf } = response.data;
     if (data.isDefault) {
-      console.log('Setando todos os isDefault = false para user:', data.userId);
       await this.setAllAsNotDefaultService.execute(data.userId);
     }
 

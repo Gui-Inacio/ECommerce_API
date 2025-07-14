@@ -41,7 +41,10 @@ export class AddressRepository
     });
   }
   async findById(id: string): Promise<Address | null> {
-    return await this.addressRepository.findOne({ where: { id: id } });
+    return await this.addressRepository.findOne({
+      where: { id: id },
+      relations: ['user'],
+    });
   }
   async findDefaultByUser(user_id: string): Promise<Address | null> {
     return await this.addressRepository.findOne({
@@ -50,5 +53,8 @@ export class AddressRepository
   }
   async deleteById(id: string): Promise<void> {
     await this.addressRepository.delete(id);
+  }
+  async setDefault(id: string): Promise<void> {
+    await this.addressRepository.update({ id: id }, { isDefault: true });
   }
 }

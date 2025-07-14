@@ -21,6 +21,7 @@ interface IAddressRepository {
   findById(id: string): Promise<Address | null>;
   findDefaultByUser(user_id: string): Promise<Address | null>;
   deleteById(id: string): Promise<void>;
+  setDefault(id: string): Promise<void>;
 }
 
 export { IAddressRepository };
