@@ -12,6 +12,7 @@ const createOrderSchema = z.object({
       }),
     )
     .min(1),
+  address: z.string().uuid(),
 });
 
 export class CreateOrderDTO extends AbstractDTO<typeof createOrderSchema> {

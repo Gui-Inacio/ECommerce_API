@@ -27,12 +27,12 @@ export class OrderRepository
   async findById(id: string) {
     return await this.orderRepository.findOne({
       where: { id },
-      relations: ['user'],
+      relations: ['user', 'address'],
     });
   }
   async listAll() {
     return await this.orderRepository.find({
-      relations: ['user'],
+      relations: ['user', 'address'],
     });
   }
   async delete(id: string) {

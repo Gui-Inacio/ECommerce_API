@@ -5,6 +5,7 @@ import { Payment } from './Payment';
 
 import { AbstractEntity } from '@/shared/infra/typeorm/entities/AbstractEntity';
 import { User } from '@/modules/users/infra/typeorm/entities/User';
+import { Address } from '@/modules/address/infra/typeorm/entities/Adress';
 
 @Entity('orders')
 export class Order extends AbstractEntity {
@@ -27,4 +28,8 @@ export class Order extends AbstractEntity {
 
   @OneToMany(() => Payment, (payment) => payment.order, { onDelete: 'CASCADE' })
   payments: Payment[];
+
+  @ManyToOne(() => Address, (address) => address.orders)
+  @JoinColumn({ name: 'address_id' })
+  address: Address;
 }

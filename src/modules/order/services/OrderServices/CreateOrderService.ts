@@ -7,6 +7,9 @@ import { IOrderItemRepository } from '../../repositories/IOrderItemRepository';
 import NotFound from '@/shared/errors/notFound';
 import { IUserRepository } from '@/modules/users/repositories/IUserRepository';
 import { IProductsRepository } from '@/modules/products/repositories/IProductsRepository';
+import { IAddressRepository } from '@/modules/address/repositories/IAddressRepository';
+import Unauthorized from '@/shared/errors/unauthorized';
+import { OrderMap } from '@/mappers/OrderMapper';
 
 @injectable()
 export class CreateOrderService {
@@ -19,12 +22,17 @@ export class CreateOrderService {
     private readonly userRepository: IUserRepository,
     @inject('ProductRepository')
     private readonly productRepository: IProductsRepository,
+    @inject('AddressRepository')
+    private readonly addressRepository: IAddressRepository,
   ) {}
 
   async execute(data: CreateOrder) {
     const user = await this.userRepository.findById(data.user);
     if (!user) throw new NotFound('User not found.');
-
+    const address = await this.addressRepository.findById(data.address);
+    if (!address || address.user.id !== user.id) {
+      throw new Unauthorized('Address not found or acess denied.');
+    }
     let total = 0;
 
     //Validate all products and calculate the total
@@ -46,6 +54,7 @@ export class CreateOrderService {
       status: 'pending',
       total,
       user,
+      address,
     });
 
     //Create Order Items
@@ -57,6 +66,6 @@ export class CreateOrderService {
         price: item.price,
       });
     }
-    return order;
+    return OrderMap.toResponse(order);
   }
 }
