@@ -5,7 +5,7 @@ import { AbstractDTO } from '@/shared/dtos/AbstractDTO';
 const updateAddressSchema = z.object({
   id: z.string().uuid(),
   number: z.string(),
-  complement: z.string().optional().nullable(),
+  complement: z.string().trim().nullable().optional(),
   street: z.string(),
   neighborhood: z.string(),
 });
