@@ -1,7 +1,11 @@
-import { StrictOmit } from '@/shared/util/types/StrictOmitType';
 import { Cart } from '../infra/typeorm/entities/Cart';
 
-export type CartSaveInput = StrictOmit<Cart, 'id' | 'cartItems' | 'user'>;
+import { StrictOmit } from '@/shared/util/types/StrictOmitType';
+
+export type CartSaveInput = StrictOmit<
+  Cart,
+  'id' | 'cartItems' | 'createdAt' | 'updatedAt' | 'generateUuid'
+>;
 export type CartUpdate = StrictOmit<Cart, 'cartItems' | 'user'>;
 
 interface ICartRepository {
@@ -10,6 +14,7 @@ interface ICartRepository {
   listAll(): Promise<Cart[]>;
   delete(id: string): Promise<void>;
   update(data: CartUpdate): Promise<void>;
+  findActiveByUser(id: string): Promise<Cart[] | null>;
 }
 
 export { ICartRepository };

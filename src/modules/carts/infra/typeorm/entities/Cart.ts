@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne } from 'typeorm';
 
 import { CartItem } from './CartItem';
 
@@ -7,6 +7,9 @@ import { User } from '@/modules/users/infra/typeorm/entities/User';
 
 @Entity('carts')
 export class Cart extends AbstractEntity {
+  @Column({ default: 'active' })
+  status: string;
+
   @OneToOne(() => User, (user) => user.cart)
   @JoinColumn({ name: 'user_id' })
   user: User;
