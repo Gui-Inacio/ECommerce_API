@@ -4,6 +4,7 @@ import { AbstractDTO } from '@/shared/dtos/AbstractDTO';
 
 const createCartSchema = z.object({
   userId: z.string().uuid(),
+  status: z.string().optional(),
 });
 
 export class CreateCartDTO extends AbstractDTO<typeof createCartSchema> {

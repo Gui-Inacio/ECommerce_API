@@ -18,7 +18,7 @@ export class FindActiveByUserIdService {
     if (!user) {
       throw new NotFound('User not found.');
     }
-    const cart = await this.cartRepository.findActiveByUser(user.id);
+    const cart = await this.cartRepository.findActiveByUserId(user.id);
     if (!cart) {
       throw new NotFound('Cart not found.');
     }

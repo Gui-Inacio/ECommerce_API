@@ -14,7 +14,7 @@ interface ICartRepository {
   listAll(): Promise<Cart[]>;
   delete(id: string): Promise<void>;
   update(data: CartUpdate): Promise<void>;
-  findActiveByUser(id: string): Promise<Cart[] | null>;
+  findActiveByUserId(id: string): Promise<Cart | null>;
 }
 
 export { ICartRepository };

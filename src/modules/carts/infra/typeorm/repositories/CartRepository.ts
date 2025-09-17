@@ -36,8 +36,8 @@ export class CartRepository
   async update(data: CartUpdate) {
     await this.cartRepository.update({ id: data.id }, data);
   }
-  async findActiveByUser(id: string) {
-    return await this.cartRepository.find({
+  async findActiveByUserId(id: string) {
+    return await this.cartRepository.findOne({
       where: { user: { id: id }, status: 'active' },
       relations: ['cartItems', 'cartItems.product'],
     });
